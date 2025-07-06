@@ -8,11 +8,12 @@ __pycache__/
 **/.ipynb_checkpoints/
 
 cnn/*
-augments/*  
+augments/large_files/*  
 data_large/*
 
-
 _private/*
-_temp1/*
+
 # ignore sandbox, for testing Claude, Gemini 
 sandbox/large_files/*
+
+temp1/large_files/*  
