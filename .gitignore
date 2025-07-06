@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# ignore sandbox, for testing Claude, Gemini 
+sandbox/*
+
+# ignore folder  
+data_large/*
+# except single file 
+!data_large/readme.md
+
+# ignore folder
+augments/*  
+# except single folder
+!augments/readme.md
+!augments/codesave/
+!augments/codesave/** 
