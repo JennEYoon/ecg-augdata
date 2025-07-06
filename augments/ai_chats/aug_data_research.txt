@@ -1,0 +1,10 @@
+This is the current plan. What changes do you want to make?
+
+(1) Find academic papers and survey articles focusing on data augmentation techniques for a noisy wearable ECG dataset from clean hospital ECG datasets. 
+(2) Investigate the specific methods discussed in these papers for simulating noise and artifacts characteristic of wearable sensors, such as motion artifacts, baseline wander, and poor electrode contact, when starting with clean ECG data.
+(3) Synthesize a list of the different data augmentation strategies, categorizing them into simple transformations (e.g., scaling, adding angular rotation of leads, randomly adding or dropping signals) and any other advanced methods.
+(4) Search for additional studies that compare data augmentation issues for 12-lead ECG signals versus 2-6 lead ECG signals, and analyze the augmentation techniques they propose. Are there any differences between aumenting 12-lead signal and 2-6 lead signal?  
+(5) Locate open-source implementations in GitHub repositories and other research websites, that are linked to the identified research papers for generating and validating augmented ECG signals. The augmented dataset should simulate noisy ECG data from a wearable ECG device.  
+(6) Research the evaluation methodologies and metrics used in the literature to assess the best way to simulated noisy augmented data for a werable ECG device.  
+(7) Explore if data augmentation techniques from other wearable biosignals (like PPG or EMG) have been successfully adapted for other body sensors, potentially offering novel approaches.
+(8) Compare and contrast the identified augmentation methods, evaluating their core concepts and effectiveness for simulating noisy augmented dataset for a wearable ECG device.
