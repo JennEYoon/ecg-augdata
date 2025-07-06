@@ -7,17 +7,12 @@ __pycache__/
 .ipynb_checkpoints/
 **/.ipynb_checkpoints/
 
+cnn/*
+augments/*  
+data_large/*
+
+
+_private/*
+_temp1/*
 # ignore sandbox, for testing Claude, Gemini 
 sandbox/large_files/*
-* ignore cnn, for 1D-cnn code and large csv output files
-cnn/*
-
-# ignore folder
-augments/*  
-# except single file
-!augments/readme.md
-
-# ignore folder  
-data_large/*
-# except single file 
-!data_large/readme.md
