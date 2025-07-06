@@ -2,20 +2,22 @@
 __pycache__/
 *.py[cod]
 *$py.class
+
+# ignore all Jupyter checkpoints everywhere 
 .ipynb_checkpoints/
 **/.ipynb_checkpoints/
 
 # ignore sandbox, for testing Claude, Gemini 
-sandbox/*
+sandbox/large_files/*
+* ignore cnn, for 1D-cnn code and large csv output files
+cnn/*
+
+# ignore folder
+augments/*  
+# except single file
+!augments/readme.md
 
 # ignore folder  
 data_large/*
 # except single file 
 !data_large/readme.md
-
-# ignore folder
-augments/*  
-# except single folder
-!augments/readme.md
-!augments/codesave/
-!augments/codesave/** 
