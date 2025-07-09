@@ -1,0 +1,134 @@
+jyoon@ROG-G17:~/repos1/ecg-augdata/cnn/cnn_aug_g1$ conda activate ecg
+(ecg) jyoon@ROG-G17:~/repos1/ecg-augdata/cnn/cnn_aug_g1$ python 1dcnn_aug_g1.py
+============================================================
+PTBXL 1D CNN Model Training v13 Augmented Data
+============================================================
+Using device: cuda
+Enabling CUDA error debugging...
+Loading data from: cnn_ready_aug_g1.csv
+Dataset shape: (143683, 187)
+Features shape: (143683, 186)
+Labels shape: (143683,)
+
+Raw class distribution:
+  Class 0.0: 99814 samples (69.5%)
+  Class 2.0: 16214 samples (11.3%)
+  Class 3.0: 6314 samples (4.4%)
+  Class 4.0: 3662 samples (2.5%)
+  Class 5.0: 9674 samples (6.7%)
+  Class 6.0: 8005 samples (5.6%)
+
+Label range: 0 to 6
+WARNING: Labels are not continuous sequence. Remapping...
+Found labels: [np.int64(0), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6)]
+Expected: [0, 1, 2, 3, 4, 5]
+Label mapping: {np.int64(0): 0, np.int64(2): 1, np.int64(3): 2, np.int64(4): 3, np.int64(5): 4, np.int64(6): 5}
+After remapping - Label range: 0 to 5
+Remapped class names: ['Sinus Rhythm (Normal) (was class 0)', 'T-wave abnormal (was class 2)', 'Atrial Fibrillation (was class 3)', '1st degree AV block (was class 4)', 'Left anterior fascicular block (was class 5)', 'Other arrhythmias (was class 6)']
+
+Final class distribution:
+  Class 0: 99814 samples (69.5%)
+  Class 1: 16214 samples (11.3%)
+  Class 2: 6314 samples (4.4%)
+  Class 3: 3662 samples (2.5%)
+  Class 4: 9674 samples (6.7%)
+  Class 5: 8005 samples (5.6%)
+✓ Label validation passed. Expected classes: 0-5
+Using remapped class names: ['Sinus Rhythm (Normal) (was class 0)', 'T-wave abnormal (was class 2)', 'Atrial Fibrillation (was class 3)', '1st degree AV block (was class 4)', 'Left anterior fascicular block (was class 5)', 'Other arrhythmias (was class 6)']
+
+Splitting data: 80% train, 20% test
+Training set: 114946 samples
+Test set: 28737 samples
+
+Training set class distribution:
+  Class 0: 79851 samples (69.5%)
+  Class 1: 12971 samples (11.3%)
+  Class 2: 5051 samples (4.4%)
+  Class 3: 2930 samples (2.5%)
+  Class 4: 7739 samples (6.7%)
+  Class 5: 6404 samples (5.6%)
+
+Preparing PyTorch data with batch size: 64
+Training tensor shape: torch.Size([114946, 1, 186])
+Test tensor shape: torch.Size([28737, 1, 186])
+Created DataLoaders: 1797 training batches, 450 test batches
+
+Initializing model with 6 classes
+
+Model architecture:
+PTBXL_ECGNet(
+  (conv1): Conv1d(1, 128, kernel_size=(80,), stride=(4,), padding=(38,))
+  (bn1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (maxpool1): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (conv2): Conv1d(128, 128, kernel_size=(3,), stride=(1,), padding=(1,))
+  (bn2): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (maxpool2): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (conv3): Conv1d(128, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+  (bn3): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (maxpool3): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (conv4): Conv1d(256, 512, kernel_size=(3,), stride=(1,), padding=(1,))
+  (bn4): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (maxpool4): MaxPool1d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (avgpool): AdaptiveAvgPool1d(output_size=1)
+  (fc): Linear(in_features=512, out_features=6, bias=True)
+  (log_softmax): LogSoftmax(dim=1)
+)
+
+Total parameters: 557,062
+Trainable parameters: 557,062
+
+Training model for 20 epochs on cuda
+Learning rate: 0.001
+Epoch [1/20], Train Loss: 0.8718, Train Acc: 71.23%, Test Loss: 0.8163, Test Acc: 71.59%
+Epoch [2/20], Train Loss: 0.7459, Train Acc: 74.33%, Test Loss: 0.7490, Test Acc: 73.54%
+Epoch [3/20], Train Loss: 0.6659, Train Acc: 76.60%, Test Loss: 0.6659, Test Acc: 76.68%
+Epoch [4/20], Train Loss: 0.5953, Train Acc: 78.79%, Test Loss: 0.6151, Test Acc: 78.37%
+Epoch [5/20], Train Loss: 0.5324, Train Acc: 80.89%, Test Loss: 0.5827, Test Acc: 79.68%
+Epoch [6/20], Train Loss: 0.4821, Train Acc: 82.61%, Test Loss: 0.6147, Test Acc: 78.33%
+Epoch [7/20], Train Loss: 0.4280, Train Acc: 84.51%, Test Loss: 0.5456, Test Acc: 80.92%
+Epoch [8/20], Train Loss: 0.3930, Train Acc: 85.59%, Test Loss: 0.5099, Test Acc: 82.57%
+Epoch [9/20], Train Loss: 0.3560, Train Acc: 86.96%, Test Loss: 0.5158, Test Acc: 82.68%
+Epoch [10/20], Train Loss: 0.3076, Train Acc: 88.66%, Test Loss: 0.5141, Test Acc: 82.87%
+Epoch [11/20], Train Loss: 0.2792, Train Acc: 89.71%, Test Loss: 0.5324, Test Acc: 83.22%
+Epoch [12/20], Train Loss: 0.2575, Train Acc: 90.51%, Test Loss: 0.5274, Test Acc: 83.78%
+Epoch [13/20], Train Loss: 0.2376, Train Acc: 91.25%, Test Loss: 0.5530, Test Acc: 83.96%
+Epoch [14/20], Train Loss: 0.2091, Train Acc: 92.31%, Test Loss: 0.5806, Test Acc: 83.84%
+Epoch [15/20], Train Loss: 0.1886, Train Acc: 92.98%, Test Loss: 0.5435, Test Acc: 84.62%
+Epoch [16/20], Train Loss: 0.1918, Train Acc: 92.96%, Test Loss: 0.5497, Test Acc: 83.90%
+Epoch [17/20], Train Loss: 0.1589, Train Acc: 94.16%, Test Loss: 0.5706, Test Acc: 84.33%
+Epoch [18/20], Train Loss: 0.3040, Train Acc: 89.04%, Test Loss: 0.5140, Test Acc: 84.85%
+Epoch [19/20], Train Loss: 0.1507, Train Acc: 94.51%, Test Loss: 0.5451, Test Acc: 85.22%
+Epoch [20/20], Train Loss: 0.1275, Train Acc: 95.32%, Test Loss: 0.5941, Test Acc: 85.08%
+
+Total training time: 0:06:52.281913
+Model saved to: ptbxl_ecg_model_v13.pth
+
+Evaluating model on test set...
+Final Test Accuracy: 85.08%
+
+Classification Report:
+                                              precision    recall  f1-score   support
+
+         Sinus Rhythm (Normal) (was class 0)       0.90      0.92      0.91     19963
+               T-wave abnormal (was class 2)       0.70      0.66      0.68      3243
+           Atrial Fibrillation (was class 3)       0.69      0.64      0.66      1263
+           1st degree AV block (was class 4)       0.79      0.73      0.76       732
+Left anterior fascicular block (was class 5)       0.73      0.70      0.71      1935
+             Other arrhythmias (was class 6)       0.81      0.73      0.77      1601
+
+                                    accuracy                           0.85     28737
+                                   macro avg       0.77      0.73      0.75     28737
+                                weighted avg       0.85      0.85      0.85     28737
+
+/home/jyoon/repos1/ecg-augdata/cnn/cnn_aug_g1/1dcnn_aug_g1.py:449: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Training history plot saved to: ptbxl_training_history_v13.png
+/home/jyoon/repos1/ecg-augdata/cnn/cnn_aug_g1/1dcnn_aug_g1.py:468: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Confusion matrix saved to: ptbxl_confusion_matrix_v13.png
+
+============================================================
+Training completed successfully!
+Final test accuracy: 85.08%
+Model saved as: ptbxl_ecg_model_v13.pth
+============================================================
